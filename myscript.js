@@ -26,7 +26,7 @@ for (var i = 0, row; row = table.rows[i]; i++) {
   col.appendChild(btnd);
   var copy = col.innerHTML
   btna.addEventListener('click', createCallback("accept " + col.innerHTML))
-  btnd.onClick = function() {}
+  btnd.addEventListener('click', createCallback("deny " + col.innerHTML))
 
   console.log("Added " + col.innerHTML);
 }
