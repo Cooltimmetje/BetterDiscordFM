@@ -15,6 +15,8 @@ function createCallback(text){
 var table = document.getElementsByClassName("table")[0];
 for (var i = 0, row; row = table.rows[i]; i++) {
 
+  if (row.cells[3].innerHTML.indexOf("pending") != -1){
+
   var col = row.cells[0]
   var btna = document.createElement("BUTTON")
   var ta = document.createTextNode("Accept");
@@ -28,5 +30,5 @@ for (var i = 0, row; row = table.rows[i]; i++) {
   btna.addEventListener('click', createCallback("accept " + col.innerHTML))
   btnd.addEventListener('click', createCallback("deny " + col.innerHTML))
 
-  console.log("Added " + col.innerHTML);
+}
 }
