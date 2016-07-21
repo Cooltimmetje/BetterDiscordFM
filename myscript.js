@@ -1,5 +1,6 @@
 function createCallback(text){
   return function(){
+  var offset = document.body.scrollTop
   var copyDiv = document.createElement('div');
   copyDiv.contentEditable = true;
   document.body.appendChild(copyDiv);
@@ -9,10 +10,12 @@ function createCallback(text){
   document.execCommand('SelectAll');
   document.execCommand("Copy", false, null);
   document.body.removeChild(copyDiv);
+  window.scrollTo(0, offset);
 }
 }
 
 var table = document.getElementsByClassName("table")[0];
+
 for (var i = 0, row; row = table.rows[i]; i++) {
 
   if (row.cells[3].innerHTML.indexOf("pending") != -1){

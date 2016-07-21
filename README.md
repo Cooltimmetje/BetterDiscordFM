@@ -9,5 +9,4 @@ I made this cuz we needed it. `¯\_(ツ)_/¯`
 * Navigate in your Chrome browser to `chrome://extensions`, and drag the `.crx` file in and allow access.
 
 ##Known Issues
-* The page scrolls when you click a button.
 * I made it.
