@@ -1,0 +1,26 @@
+{
+  "manifest_version": 2,
+
+  "name": "BetterDiscordFM",
+  "description": "Contains Dank Memes",
+  "version": "0.1",
+
+  "browser_action": {
+    "default_icon": "icon.png",
+    "default_title": "Make Discord.FM Great Again"
+  },
+
+  "permissions": [
+    "activeTab",
+    "https://temp.discord.fm/requests/*",
+    "contextMenus",
+    "clipboardWrite"
+  ],
+
+  "content_scripts": [
+    {
+      "matches": ["https://temp.discord.fm/requests/*"],
+      "js": ["myscript.js"]
+    }
+  ]
+}
