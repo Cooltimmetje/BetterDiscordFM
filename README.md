@@ -10,5 +10,4 @@ I made this cuz we needed it. `¯\_(ツ)_/¯`
 
 ##Known Issues
 * The page scrolls when you click a button.
-* The buttons also show up on a `/all` page.
 * I made it.
