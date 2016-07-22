@@ -6,7 +6,8 @@ I made this cuz we needed it. `¯\_(ツ)_/¯`
 
 ##How to install
 * Grab the latest `.crx` file from [the releases page](https://github.com/Cooltimmetje/BetterDiscordFM/releases).
-* Navigate in your Chrome browser to `chrome://extensions`, and drag the `.crx` file in and allow access.
+* Navigate in your Chrome browser to `chrome://extensions` and enable Developer Mode, if it isn't enabled.
+* Drag the `.crx` file in and allow access.
 
 ##Known Issues
 * I made it.
