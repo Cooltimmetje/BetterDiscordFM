@@ -1,10 +1,10 @@
-function createCallback(text,btn){
-  return function(){
+function createCallback(text, btn) {
+  return function() {
     var offset = document.body.scrollTop
     var copyDiv = document.createElement('div');
     copyDiv.contentEditable = true;
     document.body.appendChild(copyDiv);
-    copyDiv.innerHTML = text.replace("<button>Accept</button><button>Deny</button>"," ").replace("<button>Remove</button>"," ").trim();
+    copyDiv.innerHTML = text.replace("<button>Accept</button><button>Deny</button>", " ").replace("<button>Remove</button>", " ").trim();
     copyDiv.unselectable = "off";
     copyDiv.focus();
     document.execCommand('SelectAll');
@@ -15,14 +15,24 @@ function createCallback(text,btn){
   }
 }
 
+function createEmbed(col2, btn) {
+  return function() {
+    if (btn.innerHTML.indexOf('</iframe>') < 0) {
+      btn.innerHTML += '<br></br><iframe id="ytplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/' + col2.innerHTML.split('/')[3].substr(8) + 'frameborder="0"></iframe>'
+    }
+  }
+}
+
+
 var table = document.getElementsByClassName("table")[0];
 
 for (var i = 0, row; row = table.rows[i]; i++) {
 
-  if(row.cells.length > 3){
-    if (row.cells[3].innerHTML.indexOf("pending") != -1){
+  if (row.cells.length > 3) {
+    if (row.cells[3].innerHTML.indexOf("pending") != -1) {
 
       var col = row.cells[0]
+      col.innerHTML += '<br></br>'
       var btna = document.createElement("BUTTON")
       var ta = document.createTextNode("Accept");
       var btnd = document.createElement("BUTTON")
@@ -34,7 +44,13 @@ for (var i = 0, row; row = table.rows[i]; i++) {
       var copy = col.innerHTML
       btna.addEventListener('click', createCallback("$request accept " + col.innerHTML, btna))
       btnd.addEventListener('click', createCallback("$request deny " + col.innerHTML, btnd))
-
+      var col2 = row.cells[4]
+      col2.innerHTML += '<br></br>'
+      var btyt = document.createElement("BUTTON")
+      var tyt = document.createTextNode("Embed");
+      btyt.appendChild(tyt)
+      col2.appendChild(btyt)
+      btyt.addEventListener('click', createEmbed(col2, btyt))
     } else if (row.cells[3].innerHTML.indexOf("accepted") != -1) {
       var col = row.cells[0]
       var btn = document.createElement("BUTTON")
