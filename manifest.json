@@ -3,7 +3,7 @@
 
   "name": "BetterDiscordFM",
   "description": "Contains Dank Memes",
-  "version": "0.5",
+  "version": "0.6",
 
   "browser_action": {
     "default_icon": "icon.png",

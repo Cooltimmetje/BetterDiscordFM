@@ -15,14 +15,24 @@ function createCallback(text, btn) {
   }
 }
 
-function createEmbed(col2, btn) {
+function createEmbed(col2, btn, rows) {
   return function() {
-    if (btn.innerHTML.indexOf('</iframe>') < 0) {
-      btn.innerHTML += '<br></br><iframe id="ytplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/' + col2.innerHTML.split('/')[3].substr(8) + 'frameborder="0"></iframe>'
-    }
+	var ytif = '<br></br><iframe id="ytplayer" type="text/html" width="640" height="390" src="https://www.youtube.com/embed/' + col2.innerHTML.split('/')[3].substr(8) + 'frameborder="0"></iframe>'
+    if (rows[2].innerHTML.indexOf('</iframe>') < 0) {
+      rows[2].innerHTML += ytif
+    } else {
+	  rows[2].innerHTML = rows[2].innerHTML.substr(0, rows[2].innerHTML.length - ytif.length)
+	}
   }
 }
 
+function addStyleString(str) {
+    var node = document.createElement('style');
+    node.innerHTML = str;
+    document.body.appendChild(node);
+}
+
+addStyleString('table {text-align: center}')
 
 var table = document.getElementsByClassName("table")[0];
 
@@ -50,7 +60,7 @@ for (var i = 0, row; row = table.rows[i]; i++) {
       var tyt = document.createTextNode("Embed");
       btyt.appendChild(tyt)
       col2.appendChild(btyt)
-      btyt.addEventListener('click', createEmbed(col2, btyt))
+      btyt.addEventListener('click', createEmbed(col2, btyt, row.cells))
     } else if (row.cells[3].innerHTML.indexOf("accepted") != -1) {
       var col = row.cells[0]
       var btn = document.createElement("BUTTON")
